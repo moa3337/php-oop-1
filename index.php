@@ -5,39 +5,39 @@ class Movie {
     public $director;
     public $year;
     public $rating; 
-    public $vote;
 
-    /*public function setVote($rating) {
-        if($rating > 7.5) {
-            $this->vote = "good movie";
+    public function getRating() {
+        if ($this->rating < 7) {
+            return "Good Movie";
+        } else {
+            return "Masterpiece";
         }
-    }
-
-    public function getVote() {
-        return $this->vote;
-    }*/
-
-    function __construct($_vote) {
-        $this->vote = $_vote;
     }
 }
 
-$movie1 = new Movie(5);
+$movie1 = new Movie();
 $movie1->title = "Nomadlend";
 $movie1->director = "Chloè Zhao";
 $movie1->year = "2019";
-$movie1->rating = 9.5;
-echo $movie1->vote;
-//$vote_movie1 = $movie1->getVote();
+$movie1->rating = 9.2;
+$movie1 = $movie1->getRating();
+echo "<br/>";
+
+var_dump($movie1);
 
 $movie2 = new Movie();
 $movie2->title = "Creed III";
 $movie2->director = "Mchael B. Jordan";
 $movie2->year = "2023";
-$movie2->rating = 7.1;
-//$vote_movie2 = $movie2->getVote();
+$movie2->rating = 5.9;
+$movie2 = $movie2->getRating();
 
-var_dump($movie1);
+$movie3 = new Movie();
+$movie3->title = "The Warriors";
+$movie3->director = "Walter Hill";
+$movie3->year = "1979";
+$movie3->rating = 7.6;
+$movie3 = $movie3->getRating();
 
 ?>
 
@@ -51,6 +51,30 @@ var_dump($movie1);
     <title>php Movies</title>
 </head>
 <body>
-    
+    <table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Director</th>
+      <th>Year</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><?php echo $movie1->title; ?></td>
+      <td><?php echo $movie1->director; ?></td>
+      <td><?php echo $movie1->year; ?></td>
+      <td><?php echo $movie1->getRatingString(); ?></td>
+    </tr>
+    <tr>
+      <td><?php echo $movie2->title; ?></td>
+      <td><?php echo $movie2->director; ?></td>
+      <td><?php echo $movie2->year; ?></td>
+      <td><?php echo $movie2->getRatingString(); ?></td>
+    </tr>
+  </tbody>
+</table>
 </body>
 </html>
+
